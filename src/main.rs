@@ -25,7 +25,7 @@ impl LargeNumber {
         return LargeNumber { chars: characters };
     }
     
-    fn next(&mut self) -> LargeNumber {
+    fn next_palindrome(&mut self) -> LargeNumber {
         
         // returnable
         let mut next = LargeNumber{ chars: self.chars.to_vec() };
@@ -233,21 +233,21 @@ fn palindrome_mirror_after_3_digit() {
 
 #[test]
 fn palindrome_next() {
-    assert_eq!(LargeNumber::new("1".to_string()).next().printable(), "2");
-    assert_eq!(LargeNumber::new("5".to_string()).next().printable(), "6");
-    assert_eq!(LargeNumber::new("9".to_string()).next().printable(), "11");
-    assert_eq!(LargeNumber::new("11".to_string()).next().printable(), "22");
-    assert_eq!(LargeNumber::new("99".to_string()).next().printable(), "101");
-    assert_eq!(LargeNumber::new("111".to_string()).next().printable(), "121");
-    assert_eq!(LargeNumber::new("324".to_string()).next().printable(), "333");
-    assert_eq!(LargeNumber::new("186542".to_string()).next().printable(), "186681");
-    assert_eq!(LargeNumber::new("972692378".to_string()).next().printable(), "972696279");
-    assert_eq!(LargeNumber::new("929993774".to_string()).next().printable(), "929999929");
-    assert_eq!(LargeNumber::new("12111221".to_string()).next().printable(), "12122121");
-    assert_eq!(LargeNumber::new("0486445".to_string()).next().printable(), "486684");
-    assert_eq!(LargeNumber::new("00486445".to_string()).next().printable(), "486684");
-    assert_eq!(LargeNumber::new("87248992".to_string()).next().printable(), "87255278");
-    assert_eq!(LargeNumber::new("9999999999".to_string()).next().printable(), "10000000001");
+    assert_eq!(LargeNumber::new("1".to_string()).next_palindrome().printable(), "2");
+    assert_eq!(LargeNumber::new("5".to_string()).next_palindrome().printable(), "6");
+    assert_eq!(LargeNumber::new("9".to_string()).next_palindrome().printable(), "11");
+    assert_eq!(LargeNumber::new("11".to_string()).next_palindrome().printable(), "22");
+    assert_eq!(LargeNumber::new("99".to_string()).next_palindrome().printable(), "101");
+    assert_eq!(LargeNumber::new("111".to_string()).next_palindrome().printable(), "121");
+    assert_eq!(LargeNumber::new("324".to_string()).next_palindrome().printable(), "333");
+    assert_eq!(LargeNumber::new("186542".to_string()).next_palindrome().printable(), "186681");
+    assert_eq!(LargeNumber::new("972692378".to_string()).next_palindrome().printable(), "972696279");
+    assert_eq!(LargeNumber::new("929993774".to_string()).next_palindrome().printable(), "929999929");
+    assert_eq!(LargeNumber::new("12111221".to_string()).next_palindrome().printable(), "12122121");
+    assert_eq!(LargeNumber::new("0486445".to_string()).next_palindrome().printable(), "486684");
+    assert_eq!(LargeNumber::new("00486445".to_string()).next_palindrome().printable(), "486684");
+    assert_eq!(LargeNumber::new("87248992".to_string()).next_palindrome().printable(), "87255278");
+    assert_eq!(LargeNumber::new("9999999999".to_string()).next_palindrome().printable(), "10000000001");
 }
 
 #[test]
@@ -259,6 +259,6 @@ fn main() {
         
     for _i in 0..total_test {
         let input: String = get_input().parse().expect("Failed to parse string");
-        println!("{}", LargeNumber::new(input).next().printable());
+        println!("{}", LargeNumber::new(input).next_palindrome().printable());
     }
 }
